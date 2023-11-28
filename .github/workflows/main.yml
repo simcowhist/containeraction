@@ -1,0 +1,16 @@
+on: [push]
+
+jobs:
+  memory_job:
+    runs-on: ubuntu-latest
+    name: A job to check memory information of container
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Greet user
+        id: memory
+        uses: ./
+        with:
+          recipient: 'Simco'
+      - name: Get the output memory information
+        run: echo The container memory information is ${{ steps.memory.outputs.memory }}
